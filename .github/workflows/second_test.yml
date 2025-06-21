@@ -1,5 +1,5 @@
 name: Test Project
-on: push
+on: [push, workflow_dispatch]   # here we added mutiple run options.
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
       - name: Run tests
         run: npm test
   deploy:
-    needs: test
+    needs: test  # here we mentioned needs means this job should start after test complated.
     runs-on: ubuntu-latest
     steps:
     - name: Get code
